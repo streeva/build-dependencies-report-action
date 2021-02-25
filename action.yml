@@ -1,0 +1,30 @@
+name: 'Build Report of Dependency Information'
+description: 'Read list of depencies and build a report of dependency information'
+inputs:
+  filename:
+    description: 'Dependency Filename'
+    required: false
+    default: './dependencies.txt'
+  reporttitle:
+    description: 'Report Title'
+    required: true
+  reportfilename:
+    description: 'Report Filename'
+    required: false
+    default: 'dependency_report.html'
+  exclude:
+    description: 'Exclude Dependencies Pattern'
+    required: false
+    default: ''
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/streeva/build-dependencies-report:v1.1.0'
+  args:
+    - '-i'
+    - ${{ inputs.filename }}
+    - '-g' 
+    - ${{ inputs.reporttitle }}
+    - '-o' 
+    - ${{ inputs.reportfilename }}
+    - '-x' 
+    - ${{ inputs.exclude }}
