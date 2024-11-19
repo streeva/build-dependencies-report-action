@@ -18,7 +18,7 @@ inputs:
     default: ''
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/streeva/build-dependencies-report:v1.1.0'
+  image: 'docker://ghcr.io/streeva/build-dependencies-report:v1.2.0'
   args:
     - '-i'
     - ${{ inputs.filename }}
